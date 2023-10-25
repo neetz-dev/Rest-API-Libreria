@@ -33,7 +33,37 @@ class LibrosController {
             res.status(500).json({"Error": "Ocurrio un error al agregar el libro"});
         }
     }
+
+    async deleteISBN(req, res){
+        try {
+            const libro = req.body;
+            const [result] = await pool.query('DELETE FROM Libros WHERE ISB = (?)', [libro.ISBN]);
+            if (result.affectedRows > 0) {
+                res.json({"message": `Libro con ISBN ${libro.ISBN} eliminado exitosamente`});
+            } else {
+                res.status(404).json({"Error": `No se encontro ningun libro con el ISBN ${libro.ISBN}`});
+            }
+        } catch (error) {
+            res.status(500).json({"Error": "Ocurrio un error al eliminar el libro"});
+        }
+    }
+
+    async deleteID(req, res){
+        try {
+            const libro = req.body;
+            const [result] = await pool.query('DELETE FROM Libros WHERE id = (?)', [libro.id]);
+            if (result.affectedRows > 0) {
+                res.json({"message": `Libro con id ${libro.id} eliminado exitosamente`});
+            } else {
+                res.status(404).json({"Error": `No se encontro ningun libro con el ISBN ${libro.ISBN}`});
+            }
+        } catch (error) {
+            res.status(500).json({"Error": "Ocurrio un error al eliminar el libro"});
+        }
+    }
+
 }
+
 
 
 
