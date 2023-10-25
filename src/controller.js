@@ -19,4 +19,4 @@ class LibroController {
 }
 
 
-export const libro = new libros.LibroController();
+export const libro = new libro.LibroController();

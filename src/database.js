@@ -4,7 +4,7 @@ const properties = {
     host: 'localhost',
     user: 'root',
     password: '',
-    database: 'rest_api',
+    database: 'rest-api',
 };
 
 export const pool = mysqlConnection.createPool(properties);

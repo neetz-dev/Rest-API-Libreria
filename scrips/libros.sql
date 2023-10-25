@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-10-2023 a las 03:18:03
+-- Tiempo de generación: 25-10-2023 a las 23:51:47
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 7.4.33
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `rest_api`
+-- Base de datos: `rest-api`
 --
 
 -- --------------------------------------------------------
@@ -32,7 +32,7 @@ CREATE TABLE `libros` (
   `nombre` varchar(30) NOT NULL,
   `autor` varchar(30) NOT NULL,
   `categoria` varchar(30) NOT NULL,
-  `año_publicacion` date NOT NULL,
+  `aniopublicacion` date NOT NULL,
   `ISBN` varchar(13) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -40,12 +40,10 @@ CREATE TABLE `libros` (
 -- Volcado de datos para la tabla `libros`
 --
 
-INSERT INTO `libros` (`id`, `nombre`, `autor`, `categoria`, `año_publicacion`, `ISBN`) VALUES
-(1, 'Habitos Atomicos', 'James Clear', 'AutoAyuda', '2020-09-20', '9788418118036'),
-(2, 'Git y GitHub desde cero', 'Brais Moure', 'Programacion', '2023-04-15', '9798391200475'),
-(3, 'One Piece vol. 1', 'Eiichiro Oda', 'Manga', '2013-10-01', '9788468471525'),
-(4, 'Un puente lejano', 'Cornelius Ryan', 'Historia', '2023-09-20', '9788491995708'),
-(5, ' Messi, el genio completo', 'Ariel  Senosiain', 'Deporte', '2021-09-12', '9789500212205');
+INSERT INTO `libros` (`id`, `nombre`, `autor`, `categoria`, `aniopublicacion`, `ISBN`) VALUES
+(1, 'Padre Rico, Padre Pobre', 'Robert T. Kiyosaki', 'Finanzas', '2016-02-04', '9788466332125'),
+(2, 'Habitos Atomicos', 'James Clear', 'AutoAyuda', '2020-09-08', '9788418118036'),
+(3, 'Git y GitHub desde cero', 'Brais Moure', 'Programacion', '2023-10-10', '9798391200475');
 
 --
 -- Índices para tablas volcadas
