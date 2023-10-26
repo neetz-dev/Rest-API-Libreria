@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-10-2023 a las 23:51:47
+-- Tiempo de generación: 26-10-2023 a las 02:23:50
 -- Versión del servidor: 10.4.27-MariaDB
 -- Versión de PHP: 7.4.33
 
@@ -43,7 +43,10 @@ CREATE TABLE `libros` (
 INSERT INTO `libros` (`id`, `nombre`, `autor`, `categoria`, `aniopublicacion`, `ISBN`) VALUES
 (1, 'Padre Rico, Padre Pobre', 'Robert T. Kiyosaki', 'Finanzas', '2016-02-04', '9788466332125'),
 (2, 'Habitos Atomicos', 'James Clear', 'AutoAyuda', '2020-09-08', '9788418118036'),
-(3, 'Git y GitHub desde cero', 'Brais Moure', 'Programacion', '2023-10-10', '9798391200475');
+(3, 'Git y GitHub desde cero', 'Brais Moure', 'Programacion', '2023-10-10', '9798391200475'),
+(6, 'Rayuela', 'Julio Cortazar', 'Novela', '2013-05-16', '9789507310566'),
+(7, 'One Piece vol. 1', 'Eiichiro Oda', 'Manga', '2013-05-16', '9788468471525'),
+(8, 'Politica ArgEconomica', 'Gerardo Mazza', 'Economia', '2023-10-19', '9788393453131');
 
 --
 -- Índices para tablas volcadas
@@ -63,7 +66,7 @@ ALTER TABLE `libros`
 -- AUTO_INCREMENT de la tabla `libros`
 --
 ALTER TABLE `libros`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
