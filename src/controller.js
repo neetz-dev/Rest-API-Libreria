@@ -78,7 +78,5 @@ class LibrosController {
 }
 
 
-export const libro = new libro.LibrosController();
+export const libro = new LibrosController();
 
-
-/* Ramirez Matias Leonel */
