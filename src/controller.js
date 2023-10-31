@@ -17,7 +17,7 @@ class LibrosController {
             if (result.length > 0) {
                 res.json(result[0]);
             } else {
-                res.status(404).json({"Error": "No se encontro el libro con el ISB ${libro.ISBN}"});
+                res.status(404).json({"Error": `No se encontro el libro con el ISBN ${libro.ISBN}`});
             }
         } catch (error) {
             res.status(500).json({"Error": "Ocurrio un error al obtener el libro"});
@@ -37,7 +37,7 @@ class LibrosController {
     async deleteISBN(req, res){
         try {
             const libro = req.body;
-            const [result] = await pool.query('DELETE FROM Libros WHERE ISB = (?)', [libro.ISBN]);
+            const [result] = await pool.query('DELETE FROM Libros WHERE ISB = ?', [libro.ISBN]);
             if (result.affectedRows > 0) {
                 res.json({"message": `Libro con ISBN ${libro.ISBN} eliminado exitosamente`});
             } else {
@@ -65,7 +65,7 @@ class LibrosController {
     async update(req, res){
         try {
             const libro = req.body;
-            const [result] = await pool.query('UPDATE Libros SET nombre = (?), autor = (?), categoria = (?), aniopublicacion = (?), WHERE ISBN = (?)', [libro.nombre, libro.autor, libro.categoria, libro.aniopublicacion, libro.ISBN]);
+            const [result] = await pool.query('UPDATE Libros SET nombre = (?), autor = (?), categoria = (?), anioPublicacion = (?) WHERE ISBN = (?)', [libro.nombre, libro.autor, libro.categoria, libro.aniopublicacion, libro.ISBN]);
             if (result.affectedRows > 0) {
                 res.json({"message": `Libro con ISBN ${libro.ISBN} actualizado exitosamente`});
             } else {
