@@ -27,10 +27,17 @@ class LibrosController {
     async add(req, res) {
         try {
             const libro = req.body;
-            const[result] = await pool.query(`INSERT INTO Libros(nombre, autor, categoria, aniopublicacion, ISBN) VALUES (?, ?, ?, ?, ?)`, [libro.nombre, libro.autor, libro.categoria, libro.aniopublicacion, libro.ISBN]);
-            res.json({"ID insertado": result.insertId, "message": "Libro insertado exitosamente"});
+            if (!libro.nombre || !libro.autor || !libro.categoria || !libro.aniopublicacion || !libro.ISBN) {
+                res.status(400).json({ "Error": "Por favor, completa todos los campos obligatorios" });
+                return;
+            }
+            const [result] = await pool.query(
+                'INSERT INTO Libros(nombre, autor, categoria, aniopublicacion, ISBN) VALUES (?, ?, ?, ?, ?)',
+                [libro.nombre, libro.autor, libro.categoria, libro.aniopublicacion, libro.ISBN]
+            );
+            res.json({ "ID insertado": result.insertId, "message": "Libro insertado exitosamente" });
         } catch (error) {
-            res.status(500).json({"Error": "Ocurrio un error al agregar el libro"});
+            res.status(500).json({ "Error": "Ocurrió un error al agregar el libro" });
         }
     }
 
@@ -65,7 +72,14 @@ class LibrosController {
     async update(req, res) {
         try {
             const libro = req.body;
-            const [result] = await pool.query('UPDATE Libros SET nombre = ?, autor = ?, categoria = ?, anioPublicacion = ? WHERE ISBN = ?', [libro.nombre, libro.autor, libro.categoria, libro.aniopublicacion, libro.ISBN]);
+            if (!libro.nombre || !libro.autor || !libro.categoria || !libro.aniopublicacion || !libro.ISBN) {
+                res.status(400).json({ "Error": "Por favor, completa todos los campos obligatorios" });
+                return;
+            }
+            const [result] = await pool.query(
+                'UPDATE Libros SET nombre = ?, autor = ?, categoria = ?, anioPublicacion = ? WHERE ISBN = ?',
+                [libro.nombre, libro.autor, libro.categoria, libro.aniopublicacion, libro.ISBN]
+            );
             if (result.affectedRows === 1) {
                 res.json({ "message": `Libro con ISBN ${libro.ISBN} actualizado exitosamente` });
             } else if (result.affectedRows === 0) {
